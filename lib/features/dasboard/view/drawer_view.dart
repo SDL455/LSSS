@@ -5,7 +5,7 @@ import 'package:plp/features/auth/controllers/auth_controller.dart';
 import 'package:plp/features/auth/views/widget/login_button.dart';
 import 'package:plp/features/dasboard/view/show_modal_data.dart';
 import 'package:plp/features/dasboard/view/show_modal_password.dart';
-import 'package:plp/routes/app_rotes.dart';
+import 'package:plp/routes/app_routes.dart';
 
 class DrawerView extends StatelessWidget {
   final AuthController authController;
@@ -40,7 +40,7 @@ class DrawerView extends StatelessWidget {
                         ),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.8),
+                          Colors.black.withValues(alpha: 0.8),
                           BlendMode.dstATop,
                         ),
                       ),
@@ -57,7 +57,7 @@ class DrawerView extends StatelessWidget {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
+                                color: Colors.black.withValues(alpha: 0.2),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               ),
@@ -112,7 +112,7 @@ class DrawerView extends StatelessWidget {
                               authController.user.value?.firstName ??
                                   'ບໍ່ມີຂໍ້ມູນ',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -122,7 +122,7 @@ class DrawerView extends StatelessWidget {
                               authController.user.value?.lastName ??
                                   'ບໍ່ມີຂໍ້ມູນ',
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -138,16 +138,25 @@ class DrawerView extends StatelessWidget {
                   //modal bottom sheet change password
 
                   ShowModalPassword(),
+
+                  ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text('ຂໍ້ມູນລູກຄ້າ'),
+                    onTap: () {
+                      Get.toNamed(AppRoutes.userData);
+                    },
+                    trailing: Icon(Icons.arrow_forward_ios),
+                  )
                 ],
               ),
             ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.1),
+                color: Colors.white.withValues(alpha: 0.1),
                 border: Border(
                   top: BorderSide(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                   ),
                 ),
               ),

@@ -8,4 +8,6 @@ class AppRoutes {
   static const String dashboard = '/dashboard';
   static const String updateuser = '/updateuser';
   static const String certificateResult = '/certificateResult';
+  static const String userData = '/userData';
+  static const String addNewCustomer = '/addNewCustomer';
 }

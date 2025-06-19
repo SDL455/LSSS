@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:plp/core/color/app_colors.dart';
-import 'package:plp/features/dasboard/controllers/certificate_controller.dark';
+import 'package:plp/features/dasboard/controllers/certificate_controller.dart';
 import 'package:plp/features/dasboard/view/widget/certificate_details.dart';
 
 class certificateResult extends StatelessWidget {

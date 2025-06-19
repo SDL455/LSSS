@@ -24,7 +24,7 @@ class ItemCard extends StatelessWidget {
       ),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: AppColor.primaryColor.withOpacity(0.1),
+          backgroundColor: AppColor.primaryColor.withValues(alpha: 0.1),
           child: Icon(icon, color: AppColor.primaryColor),
         ),
         title: Text(
@@ -34,7 +34,7 @@ class ItemCard extends StatelessWidget {
         trailing: Container(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: AppColor.primaryColor.withOpacity(0.1),
+            color: AppColor.primaryColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(
