@@ -36,7 +36,9 @@ class DashboardView extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      drawer: DrawerView(authController: authController),
+      drawer: DrawerView(
+        authController: authController,
+      ),
       body: Obx(
         () => dashboardController.isLoading.value ||
                 reportCustomerController.isLoading.value ||

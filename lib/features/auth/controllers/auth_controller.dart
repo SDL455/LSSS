@@ -2,13 +2,12 @@
 import 'package:get/get.dart';
 import 'package:plp/core/models/user_model/user_model.dart';
 import 'package:plp/core/services/auth_service.dart';
-import 'package:plp/routes/app_rotes.dart';
+import 'package:plp/routes/app_routes.dart';
 
 class AuthController extends GetxController {
   final AuthService _authService = Get.find();
   var isLoading = false.obs;
   var user = Rxn<UserModel>();
-
 
   Future<void> login(String username, String password) async {
     try {

@@ -4,7 +4,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:new_version_plus/new_version_plus.dart';
 import 'package:plp/core/models/scanner_check_certificate_model/scanner_check_certificate_model.dart';
 import 'package:plp/core/services/api_service.dart';
-import 'package:plp/routes/app_rotes.dart';
+import 'package:plp/routes/app_routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CertificateController extends GetxController {

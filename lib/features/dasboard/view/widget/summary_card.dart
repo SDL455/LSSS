@@ -9,7 +9,9 @@ class SummaryCard extends StatelessWidget {
   const SummaryCard({
     Key? key,
     required this.title,
-    required this.value, required ItemCard Function(dynamic item) itemBuilder, required List<Map<String, Object?>> items, 
+    required this.value,
+    required ItemCard Function(dynamic item) itemBuilder,
+    required List<Map<String, Object?>> items,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class SummaryCard extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               AppColor.primaryColor,
-              AppColor.primaryColor.withOpacity(0.8),
+              AppColor.primaryColor.withValues(alpha: 0.8),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
