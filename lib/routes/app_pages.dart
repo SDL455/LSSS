@@ -6,6 +6,7 @@ import 'package:plp/features/dasboard/bingings/%E0%BA%B5update_binding.dart';
 import 'package:plp/features/dasboard/bingings/DetailsCertificateCheckView.dart';
 import 'package:plp/features/dasboard/bingings/dashboard_binding.dart';
 import 'package:plp/features/dasboard/view/Dasboard_view.dart';
+import 'package:plp/features/dasboard/view/add_new_customer.dart';
 import 'package:plp/features/dasboard/view/certificate_result.dart';
 import 'package:plp/features/dasboard/view/show_model_data_update.dart';
 import 'package:plp/features/dasboard/view/user_data_view.dart';
@@ -36,6 +37,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.userData,
       page: () => UserDataView(),
+      // binding: UserDataBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.addNewCustomer,
+      page: () => AddNewCustomer(),
       // binding: UserDataBinding(),
     ),
   ];
