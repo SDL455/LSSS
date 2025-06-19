@@ -64,80 +64,142 @@ class UserDataView extends StatelessWidget {
   }
 
   void _showFilterDialog(BuildContext context) {
+    String? selectedCustomerType;
+    String? selectedProvince;
+    final TextEditingController searchController = TextEditingController();
+    final List<String> customerTypes = [
+      'ປະເພດ A',
+      'ປະເພດ B',
+      'ປະເພດ C'
+    ]; // Example data
+    final List<String> provinces = [
+      'ກະຊວງ 1',
+      'ກະຊວງ 2',
+      'ກະຊວງ 3'
+    ]; // Example data
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          title: const Text(
-            'ກັ່ນຕອງຂໍ້ມູນ',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildFilterOption('ທັງໝົດ', () {
-                Navigator.of(context).pop();
-                // Add filter logic here
-              }),
-              _buildFilterOption('ລູກຄ້າທົ່ວໄປ', () {
-                Navigator.of(context).pop();
-                // Add filter logic here
-              }),
-              _buildFilterOption('ລູກຄ້າທົ່ວໄປ', () {
-                Navigator.of(context).pop();
-                // Add filter logic here
-              }),
-              _buildFilterOption('ລູກຄ້າທົ່ວໄປ', () {
-                Navigator.of(context).pop();
-                // Add filter logic here
-              }),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text(
-                'ຍົກເລີກ',
-                style: TextStyle(color: Colors.grey),
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
-            ),
-          ],
+              title: const Text(
+                'ກັ່ນຕອງຂໍ້ມູນ',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              content: SizedBox(
+                width: 400,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Search Field
+                    TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        hintText:
+                            'ຄົ້ນຫາຕາມຊື່ລູກຄ້າ ຊື່ ນາມສະກຸນ ລະຫັດລູກຄ້າ ລະຫັດບັດລູກຄ້າ....',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 12),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    // Customer Type Dropdown
+                    const Text('ປະເພດລູກຄ້າ'),
+                    const SizedBox(height: 6),
+                    DropdownButtonFormField<String>(
+                      value: selectedCustomerType,
+                      isExpanded: true,
+                      hint: const Text('ກະລຸນາເລືອກປະເພດລູກຄ້າ'),
+                      items: customerTypes.map((type) {
+                        return DropdownMenuItem<String>(
+                          value: type,
+                          child: Text(type),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedCustomerType = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 12),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    // Province Dropdown
+                    const Text('ແຂວງ'),
+                    const SizedBox(height: 6),
+                    DropdownButtonFormField<String>(
+                      value: selectedProvince,
+                      isExpanded: true,
+                      hint: const Text('ກະລຸນາເລືອກແຂວງ'),
+                      items: provinces.map((province) {
+                        return DropdownMenuItem<String>(
+                          value: province,
+                          child: Text(province),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedProvince = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'ຍົກເລີກ',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle filter logic here
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                  ),
+                  child: const Text(
+                    'ຕົກລົງ',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
-    );
-  }
-
-  Widget _buildFilterOption(String title, VoidCallback onPressed) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 8),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.grey[100],
-          foregroundColor: Colors.black87,
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
     );
   }
 
